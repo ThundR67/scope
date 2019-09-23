@@ -14,11 +14,6 @@ type testStruct struct {
 func TestOperationAllowed(t *testing.T) {
 	assert := assert.New(t)
 
-	assert.True(IsOperationAllowed(testStruct{}, "A", READ, []string{"read:A"}))
-	assert.True(IsOperationAllowed(testStruct{}, "A", WRITE, []string{"write:A"}))
-	assert.False(IsOperationAllowed(testStruct{}, "A", READ, []string{"read:B"}))
-	assert.False(IsOperationAllowed(testStruct{}, "A", WRITE, []string{"write:B"}))
-
 	output := testStruct{
 		A: "A",
 		B: "B",
