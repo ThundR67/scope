@@ -2,10 +2,9 @@ package scopes
 
 import (
 	"strings"
-	"sync"
 )
 
-//strech connverts a slice to bigger length by adding toAdd to it
+// strech converts a slice to bigger length by adding toAdd to it
 func strech(scopeSlice []string, toAdd string, toLen int) []string {
 	lenDiff := toLen - len(scopeSlice)
 	for i := 0; i < lenDiff; i++ {
@@ -14,7 +13,7 @@ func strech(scopeSlice []string, toAdd string, toLen int) []string {
 	return scopeSlice
 }
 
-//MatchScopes matches two scopes using Wildcard Scope Matching Strategy (asymetric)
+// MatchScopes matches two scopes using Wildcard Scope Matching Strategy (asymetric)
 func MatchScopes(scopeA, scopeB string) bool {
 	scopeASplit := strings.Split(scopeA, ":")
 	scopeBSplit := strings.Split(scopeB, ":")
@@ -41,9 +40,7 @@ func MatchScopes(scopeA, scopeB string) bool {
 	return true
 }
 
-var wg sync.WaitGroup
-
-/*ScopeInAllowed is used to check if scope is allowed based on allowed scopes list */
+// ScopeInAllowed is used to check if scope is allowed based on allowed scopes list
 func ScopeInAllowed(scope string, allowedScopes []string) bool {
 	for _, allowedScope := range allowedScopes {
 		if MatchScopes(scope, allowedScope) {

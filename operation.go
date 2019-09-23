@@ -11,19 +11,6 @@ const (
 	WRITE = "write"
 )
 
-//IsOperationAllowed checks if the operation a a field of a struct is allowed
-func IsOperationAllowed(
-	data interface{},
-	fieldName string,
-	operation string,
-	scopesAllowed []string) bool {
-
-	typeOf := reflect.TypeOf(data)
-	field, _ := typeOf.FieldByName(fieldName)
-	scopeRequired := field.Tag.Get(operation + "Scope")
-	return ScopeInAllowed(scopeRequired, scopesAllowed)
-}
-
 //FilterRead is used to filter output to onlly output what client can see based on scopes
 func FilterRead(data interface{}, scopesAllowed []string) {
 	valueOf := reflect.Indirect(reflect.ValueOf(data))
