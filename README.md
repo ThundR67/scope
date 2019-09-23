@@ -24,3 +24,28 @@ This strategy will work like this :-
 * `users.write.*` does not match `users.read.own`
 * `users.*.bar` matches `users.baz.bar`
 * `users.*.bar` does not `users.baz.baz.bar`
+
+## Filtering Struct For Read Request
+When a client request certain data, this function will eliminate any data in the struct for which the client does not have a read scope.
+```go
+type user struct {
+    username string `readScope:"user:read:username"`
+    email string `readScope:"user:read:email"`
+}
+
+
+func main() {
+    output := user{username : "Test", email : "Test@Test.com"}
+    scopesHeldByClient := []string{"user:read:username"}
+    scope.FilterRead(output, scopesHeldByClient)
+
+    // Now output.email will be nil as client does not have scope required to read email field
+
+    output := user{username : "Test", email : "Test@Test.com"}
+    scopesHeldByClient := []string{"user:read:*"}
+    scope.FilterRead(output, scopesHeldByClient)
+
+    // Now none of the field in output will be nil as client has scopes to read everything in user struct
+}
+
+```
