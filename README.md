@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/scope)](https://goreportcard.com/report/github.com/SonicRoshan/scope) [![GoDoc](https://godoc.org/github.com/SonicRoshan/scope?status.svg)](https://godoc.org/github.com/SonicRoshan/scope) [![GoCover](https://gocover.io/_badge/github.com/SonicRoshan/scope)](https://gocover.io/github.com/SonicRoshan/scope)
+
 # Scope
 Easily Manage OAuth2 Scopes In Go
 
