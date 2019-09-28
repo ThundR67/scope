@@ -45,7 +45,7 @@ func main() {
 
     output := user{username : "Test", email : "Test@Test.com"}
     scopesHeldByClient := []string{"user:read:*"}
-    scope.FilterRead(output, scopesHeldByClient)
+    scope.FilterRead(&output, scopesHeldByClient)
 
     // Now none of the field in output will be nil as client has scopes to read everything in user struct
 }
