@@ -1,4 +1,4 @@
-package scope
+package scopes
 
 import (
 	"testing"
